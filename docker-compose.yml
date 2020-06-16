@@ -1,0 +1,28 @@
+version: '3'
+services:
+  web:
+    image: php:apache
+    ports:
+      - "8080:80"
+    volumes:
+      - ./demo-web:/var/www/html
+    networks:
+      net:
+        ipv4_address: 172.28.1.1
+  server:
+    image: nmt_server
+    build: .
+    ports:
+      - "6542"
+    volumes:
+      - ./model:/opt/nmt-keras/model
+      - ./joint_bpe:/home/lvapeab/DATASETS/demo-web/esen/joint_bpe/
+    networks:
+      net:
+        ipv4_address: 172.28.1.2
+networks:
+  net:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.28.0.0/16
