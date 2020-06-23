@@ -9,17 +9,28 @@ services:
     networks:
       net:
         ipv4_address: 172.28.1.1
-  server:
-    image: nmt_server
-    build: .
+  modernization:
+    image: modernization_server
+    build: ./modernization
     ports:
       - "6542"
     volumes:
-      - ./model:/opt/nmt-keras/model
-      - ./joint_bpe:/home/lvapeab/DATASETS/demo-web/esen/joint_bpe/
+      - ./modernization/model:/opt/nmt-keras/model
+      - ./modernization/joint_bpe:/home/lvapeab/DATASETS/demo-web/esen/joint_bpe/
     networks:
       net:
         ipv4_address: 172.28.1.2
+  spelling:
+    image: spelling_server
+    build: ./spelling
+    ports:
+      - "6543"
+    volumes:
+      - ./spelling/model:/opt/nmt-keras/model
+      - ./spelling/joint_bpe:/home/lvapeab/DATASETS/demo-web/esen/joint_bpe/
+    networks:
+      net:
+        ipv4_address: 172.28.1.3
 networks:
   net:
     ipam:

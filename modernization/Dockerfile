@@ -38,11 +38,11 @@ bash /tmp/miniconda.sh -b -p /opt/miniconda && export PATH="/opt/miniconda/bin:$
 conda config --set always_yes yes --set changeps1 no && conda update -q conda && conda init && \
 conda install --file /opt/nmt-keras/req-travis-conda.txt && \
 conda install mkl mkl-service && pip install -r /opt/nmt-keras/req-travis-pip.txt && \
-pip install tensorflow==1.14.0 && rm /tmp/miniconda.sh
+pip install tensorflow==1.14.0 && pip install tensorflow-gpu==1.14 && rm /tmp/miniconda.sh
 
 ###################
 ## Launch server ##
 ###################
-CMD export PATH="/opt/miniconda/bin:$PATH" && export PYTHONPATH=\$PYTHONPATH:/opt/multimodal_keras_wrapper/:/opt/keras/ && \
+CMD export PATH="/opt/miniconda/bin:$PATH" && export PYTHONPATH=\$PYTHONPATH:/opt/multimodal_keras_wrapper/:/opt/keras/:/opt/nmt-keras/src/coco-caption && \
 python ./demo-web/sample_server.py -v 2 --logging-level 2 --dataset ./model/Dataset_demo-web_esen.pkl \
 --port=6542 --config ./model/config.pkl --models ./model/update_0 --changes LR=0.0
