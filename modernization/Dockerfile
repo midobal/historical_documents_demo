@@ -1,4 +1,4 @@
-FROM nvidia/cuda:10.1-base-ubuntu18.04
+FROM nvidia/cuda:10.0-cudnn7-runtime-ubuntu18.04
 
 ##################
 ## Requirements ##
@@ -6,6 +6,7 @@ FROM nvidia/cuda:10.1-base-ubuntu18.04
 SHELL ["/bin/bash", "-c"]
 RUN apt-get update && apt-get install -y git wget && \
 rm -rf /var/lib/apt/lists/*
+RUN export LD_LIBRARY_PATH=/usr/local/cuda/lib64
 
 ########################
 ## Multimodal Wrapper ##
@@ -26,9 +27,8 @@ RUN git checkout 144cc29a688c384967d1a3e05755d9991edacaea && echo \
 ###############
 ## NMT-Keras ##
 ###############
-RUN git clone https://github.com/midobal/nmt-keras.git /opt/nmt-keras
+RUN git clone --branch hd_demo https://github.com/midobal/nmt-keras.git /opt/nmt-keras
 WORKDIR /opt/nmt-keras
-RUN git checkout hd_demo
 
 ############################
 ## NMT-Keras Requirements ##
@@ -44,5 +44,6 @@ pip install tensorflow==1.14.0 && pip install tensorflow-gpu==1.14 && rm /tmp/mi
 ## Launch server ##
 ###################
 CMD export PATH="/opt/miniconda/bin:$PATH" && export PYTHONPATH=\$PYTHONPATH:/opt/multimodal_keras_wrapper/:/opt/keras/:/opt/nmt-keras/src/coco-caption && \
-python ./demo-web/sample_server.py -v 2 --logging-level 2 --dataset ./model/Dataset_demo-web_esen.pkl \
---port=6542 --config ./model/config.pkl --models ./model/update_0 --changes LR=0.0
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64 && \
+python ./demo-web/sample_server.py -v 2 --logging-level 2 --dataset ./model/Dataset_demo.pkl \
+--port=6542 --models ./model/update_0 --changes LR=0.0

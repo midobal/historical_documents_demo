@@ -1,4 +1,4 @@
-version: '3'
+version: '2.4'
 services:
   web:
     image: php:apache
@@ -16,10 +16,14 @@ services:
       - "6542"
     volumes:
       - ./modernization/model:/opt/nmt-keras/model
-      - ./modernization/joint_bpe:/home/lvapeab/DATASETS/demo-web/esen/joint_bpe/
+      #- ./modernization/joint_bpe:/home/lvapeab/DATASETS/demo-web/esen/joint_bpe/
+      - ./modernization/model/config.py:/opt/nmt-keras/config.py
     networks:
       net:
         ipv4_address: 172.28.1.2
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
   spelling:
     image: spelling_server
     build: ./spelling
@@ -27,10 +31,14 @@ services:
       - "6543"
     volumes:
       - ./spelling/model:/opt/nmt-keras/model
-      - ./spelling/joint_bpe:/home/lvapeab/DATASETS/demo-web/esen/joint_bpe/
+      #- ./spelling/joint_bpe:/home/lvapeab/DATASETS/demo-web/esen/joint_bpe/
+      - ./spelling/model/config.py:/opt/nmt-keras/config.py
     networks:
       net:
         ipv4_address: 172.28.1.3
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
 networks:
   net:
     ipam:
