@@ -16,7 +16,6 @@ services:
       - "6542"
     volumes:
       - ./modernization/model:/opt/nmt-keras/model
-      #- ./modernization/joint_bpe:/home/lvapeab/DATASETS/demo-web/esen/joint_bpe/
       - ./modernization/model/config.py:/opt/nmt-keras/config.py
     networks:
       net:
@@ -31,7 +30,6 @@ services:
       - "6543"
     volumes:
       - ./spelling/model:/opt/nmt-keras/model
-      #- ./spelling/joint_bpe:/home/lvapeab/DATASETS/demo-web/esen/joint_bpe/
       - ./spelling/model/config.py:/opt/nmt-keras/config.py
     networks:
       net:
