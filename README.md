@@ -1,19 +1,17 @@
-# Interactive Multimodal Sequence-to-sequence web demo
+# Machine Translation Applications to Historical Documents demo
 
-This is a web demo of interactive, adaptive neural multimodal systems built with [NMT Keras](https://github.com/lvapeab/nmt-keras) and [Interactive Keras Captioning](https://github.com/lvapeab/interactive-keras-captioning).
-
-![](https://github.com/lvapeab/inmt_demo_web/blob/master/demo-web/images/demo-system.gif)
+This is a web demo of some machine translation applications to historical documents.
 
 ## Structure
 
 The system follows a client-server architecture. The main files are:
 
-- **index.html** and **document_translation.html**: HTML webpage.
-- **sample_server.py** is an HTTP server version of the interactive sampler.
-- **sampler.php** and **inmt_sampler.php** query the server to get a translation (given a validated prefix or not).
+- **index.html**: HTML webpage.
+- **sample_server.py**: HTTP server version of the interactive sampler.
+- **sampler_modernization.php**, **sampler_spelling.php**, **inmt_sampler_modernization.php** and **inmt_sampler_spelling.php** query the server to get a modernization/normalization (given a validated prefix or not).
 - The `images` and `assets` directories contain some visual resources.
 
-## How to run a demo server (see [NMT Keras](https://github.com/lvapeab/nmt-keras/tree/master/demo-web))
+## How to run a demo server (see [NMT Keras](https://github.com/midobal/nmt-keras/tree/hd_demo/demo-web))
 
 In order to provide high response rate and translation speed, it is highly recommended that the server has a GPU available.
 By default, the server requires the `InteractiveNMT` branch from the [Multimodal Keras Wrapper](https://github.com/lvapeab/staged_keras_wrapper/tree/Interactive_NMT).
@@ -34,7 +32,7 @@ Finally, we need to run our php server. The php document root should point to th
 php -S localhost:8000
 ```
 
-Finally, we should make `sampler.php` match our `sample_server.py` port. In `sampler.php` and `inmt_sampler.php`
+Finally, we should make `sampler.php` match our `sample_server.py` port. In `sampler_modernization.php`, `sampler_spelling.php`, `inmt_sampler_modernization.php` and `inmt_sampler_spelling.php`
 the lines
 ```
 $url = 'http://localhost:6542/?source='.urlencode($source);
@@ -49,7 +47,7 @@ should point to your sample_server port.
 You can easily run a demo through Docker using docker-compose. To do so, first you need to deploy your models in `modernization/model` and `spelling/model`. Then, you just need to run:
 
 ```
-docker-compose -up
+docker-compose up
 ```
 
 By default, docker-compose uses only CPU. If you want to run a demo using GPU, check [GPU support](#gpu-support).
@@ -94,4 +92,4 @@ EOF
 ```
 
 
-[Check out the demo!](http://casmacat.prhlt.upv.es/interactive-seq2seq/).
+[Check out the demo!](http://casmacat.prhlt.upv.es/mthd/).
