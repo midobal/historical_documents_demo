@@ -8,7 +8,7 @@ This is a web demo of some machine translation applications to historical docume
 * [Structure](#structure).
 * [How to run a demo server](#how-to-run-a-demo-server-see-nmt-keras).
 * [How to run the PHP server](#how-to-run-the-php-server).
-* [Run through Docker](run-through-docker).
+* [Run through Docker](#run-through-docker).
 
 ## Structure
 
