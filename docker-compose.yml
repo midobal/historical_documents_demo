@@ -15,8 +15,10 @@ services:
     ports:
       - "6542"
     volumes:
-      - ./modernization/model:/opt/nmt-keras/model
-      - ./modernization/model/config.py:/opt/nmt-keras/config.py
+      - ./modernization/models:/opt/nmt-keras/models
+      - ./modernization/config.py:/opt/nmt-keras/config.py
+      - ./modernization/dataset:/opt/nmt-keras/dataset
+      - ./modernization/config_online.py:/opt/nmt-keras/demo-web/config_online.py
     networks:
       net:
         ipv4_address: 172.28.1.2
@@ -29,8 +31,10 @@ services:
     ports:
       - "6543"
     volumes:
-      - ./spelling/model:/opt/nmt-keras/model
-      - ./spelling/model/config.py:/opt/nmt-keras/config.py
+      - ./spelling/models:/opt/nmt-keras/models
+      - ./spelling/config.py:/opt/nmt-keras/config.py
+      - ./spelling/dataset:/opt/nmt-keras/dataset
+      - ./spelling/config_online.py:/opt/nmt-keras/demo-web/config_online.py
     networks:
       net:
         ipv4_address: 172.28.1.3

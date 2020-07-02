@@ -45,5 +45,5 @@ pip install tensorflow==1.14.0 && pip install tensorflow-gpu==1.14 && rm /tmp/mi
 ###################
 CMD export PATH="/opt/miniconda/bin:$PATH" && export PYTHONPATH=\$PYTHONPATH:/opt/multimodal_keras_wrapper/:/opt/keras/:/opt/nmt-keras/src/coco-caption && \
 export LD_LIBRARY_PATH=/usr/local/cuda/lib64 && \
-python ./demo-web/sample_server.py -v 2 --logging-level 2 --dataset ./model/Dataset_demo.pkl \
---port=6542 --models ./model/update_0 --changes LR=0.0 STORE_PATH=model/new_models --online
+python ./demo-web/sample_server.py -v 2 --logging-level 2 --dataset ./dataset/Dataset_demo.pkl \
+--port=6542 --models ./models/update_demo --online
