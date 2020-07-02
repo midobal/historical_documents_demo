@@ -1,6 +1,14 @@
 # Machine Translation Applications to Historical Documents demo
 
+![](Screenshot.png)
+
 This is a web demo of some machine translation applications to historical documents.
+
+## Table of contents
+* [Structure](#structure).
+* [How to run a demo server](#how-to-run-a-demo-server-see-nmt-keras).
+* [How to run the PHP server](#how-to-run-the-php-server).
+* [Run through Docker](run-through-docker).
 
 ## Structure
 
@@ -44,13 +52,13 @@ $url = 'http://localhost:6542/?source='.urlencode($source).'&prefix='.urlencode(
 should point to your sample_server port.
 
 ## Run through Docker
-You can easily run a demo through Docker using docker-compose. To do so, first you need to deploy your models in `modernization/model` and `spelling/model`. Then, you just need to run:
+You can easily run a demo through Docker using docker-compose. To do so, first you need to deploy your models and datasets in `modernization/models`, `spelling/models`, `modernization/dataset` and `spelling/dataset`. Then, you just need to run:
 
 ```
 docker-compose up
 ```
 
-By default, docker-compose uses only CPU. If you want to run a demo using GPU, check [GPU support](#gpu-support).
+By default, docker-compose uses only CPU. If you want to run a demo using GPU, check [GPU support](#gpu-support). Alternative, if you want to run the demo servers individually (without the PHP server), you can have a look at this [link](https://github.com/midobal/dockerfiles/tree/master/mthd).
 
 ### GPU support
 To run a demo through Docker using a GPU, you need to:
