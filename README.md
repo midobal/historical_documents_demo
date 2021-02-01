@@ -100,4 +100,4 @@ EOF
 ```
 
 
-[Check out the demo!](http://casmacat.prhlt.upv.es/mthd/).
+[Check out the demo!](http://demosmt.prhlt.upv.es/mthd/).
