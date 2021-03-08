@@ -2,13 +2,14 @@
 
 ![](Screenshot.png)
 
-This is a web demo of some machine translation applications to historical documents.
+This demo showcases two machine translation applications to historical documents. The first task consists in generating a new version of a historical document, written in the modern version of its original language. The second application is limited to a document’s orthography. It adapts the document’s spelling to modern standards in order to achieve an orthography consistency and accounting for the lack of spelling conventions.
 
 ## Table of contents
 * [Structure](#structure).
 * [How to run a demo server](#how-to-run-a-demo-server-see-nmt-keras).
 * [How to run the PHP server](#how-to-run-the-php-server).
 * [Run through Docker](#run-through-docker).
+* [Citation](#citation).
 
 ## Structure
 
@@ -98,6 +99,11 @@ EOF
 ```
  systemctl restart docker
 ```
+
+## Citation
+On the use of this repo, please cite the following paper:
+
+* Miguel Domingo and Francisco Casacuberta. Two demonstrations of the machine translation applications to historical documents. *arXiv preprint arXiv:2102.01417*, 2021. Presented at the Demos session of ICPR 2020: https://www.micc.unifi.it/icpr2020/index.php/demos/.
 
 
 [Check out the demo!](http://demosmt.prhlt.upv.es/mthd/).
