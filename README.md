@@ -59,7 +59,7 @@ You can easily run a demo through Docker using docker-compose. To do so, first y
 docker-compose up
 ```
 
-By default, docker-compose uses only CPU. If you want to run a demo using GPU, check [GPU support](#gpu-support). Alternative, if you want to run the demo servers individually (without the PHP server), you can have a look at this [link](https://github.com/midobal/dockerfiles/tree/master/mthd).
+By default, docker-compose uses only CPU. If you want to run a demo using GPU, check [GPU support](#gpu-support). Alternatively, if you want to run the demo servers individually (without the PHP server), you can have a look at this [link](https://github.com/midobal/dockerfiles/tree/master/mthd).
 
 ### GPU support
 To run a demo through Docker using a GPU, you need to:
